@@ -1,1 +1,1 @@
-# devoxx-ua-2020
+# Cloud Native Spring - Migrating Traditional Apps (Devoxx Ukraine 2020)

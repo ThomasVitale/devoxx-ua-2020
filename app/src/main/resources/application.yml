@@ -1,0 +1,44 @@
+server:
+  port: 9000
+  compression:
+    enabled: true
+    min-response-size: 1KB
+  shutdown: graceful
+  tomcat:
+    connection-timeout: 20s
+    threads:
+      max: 100
+      min-spare: 10
+
+greeting: "Hello, Devoxx!"
+
+spring:
+  application:
+    name: app
+  config:
+    import:
+      optional:
+        configserver: "http://localhost:8888"
+        #consul: "http://localhost:8500"
+        #vault: "http://localhost:8200"
+        #zookeeper: "http://localhost:2181"
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: health,prometheus
+  endpoint:
+    health:
+      enabled: true
+      probes:
+        enabled: true
+      show-details: always
+    prometheus:
+      enabled: true
+  health:
+    diskspace:
+      enabled: false
