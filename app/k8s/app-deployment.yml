@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+  labels:
+    app: spring-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: thomasvitale/app:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 9000
+          livenessProbe:
+            httpGet:
+              port: 9000
+              path: /actuator/health/liveness
+          readinessProbe:
+            httpGet:
+              port: 9000
+              path: /actuator/health/readiness
+          env:
+            - name: GREETING
+              value: Hello from Kubernetes!
