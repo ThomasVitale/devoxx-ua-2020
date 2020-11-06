@@ -12,6 +12,6 @@ public class TomcatConfig implements WebServerFactoryCustomizer<TomcatServletWeb
 	@Override
 	public void customize(TomcatServletWebServerFactory factory) {
 		// Logs version information on startup.
-		factory.addContextLifecycleListeners(new VersionLoggerListener());
+		//factory.addContextLifecycleListeners(new VersionLoggerListener());
 	}
 }
