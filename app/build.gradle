@@ -18,6 +18,11 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
+bootBuildImage {
+	imageName = "thomasvitale/${project.name}:${project.version}"
+	environment = ["BP_JVM_VERSION": "11.*"]
+}
+
 test {
 	useJUnitPlatform()
 }
