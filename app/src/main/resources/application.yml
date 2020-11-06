@@ -3,6 +3,7 @@ server:
   compression:
     enabled: true
     min-response-size: 1KB
+  shutdown: graceful
   tomcat:
     connection-timeout: 20s
     threads:
@@ -21,3 +22,5 @@ spring:
         #consul: "http://localhost:8500"
         #vault: "http://localhost:8200"
         #zookeeper: "http://localhost:2181"
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
